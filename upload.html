@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Screen Resume - ResumeAI</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="logo">Resume<span>AI</span></div>
+
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="upload.html">Screen Resume</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="index.html">Logout</a>
+      </nav>
+    </header>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+      <div class="upload-heading">
+        <p class="section-tag">AI RESUME SCREENING</p>
+
+        <h1>Analyze Candidate Resume</h1>
+
+        <p>
+          Upload a resume and enter the job requirements to calculate the
+          candidate match score.
+        </p>
+      </div>
+
+      <div class="upload-container">
+        <!-- Resume Upload Card -->
+
+        <div class="upload-card">
+          <h2>📄 Upload Resume</h2>
+
+          <p class="card-description">Select candidate resume file</p>
+
+          <div class="file-upload">
+            <div class="upload-icon">📤</div>
+
+            <h3>Upload Resume</h3>
+
+            <p>PDF, DOC or DOCX</p>
+
+            <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" />
+
+            <label for="resumeFile" class="choose-btn"> Choose File </label>
+
+            <p id="fileName">No file selected</p>
+          </div>
+        </div>
+
+        <!-- Job Description Card -->
+
+        <div class="upload-card">
+          <h2>💼 Job Description</h2>
+
+          <p class="card-description">
+            Enter required skills and qualifications
+          </p>
+
+          <textarea
+            id="jobDescription"
+            placeholder="Example:
+
+We are looking for a Python Developer.
+
+Required Skills:
+Python
+HTML
+CSS
+JavaScript
+SQL
+Machine Learning
+Git
+Communication Skills"
+          ></textarea>
+
+          <div class="requirements">
+            <span>Skills</span>
+            <span>Experience</span>
+            <span>Education</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resume Text -->
+
+      <div class="resume-text-card">
+        <h2>📝 Resume Information</h2>
+
+        <p>For this frontend demo, paste the candidate's resume text below.</p>
+
+        <textarea
+          id="resumeText"
+          placeholder="Paste candidate resume text here...
+
+Example:
+
+Name: Rahul thakre
+
+Education:
+B.Tech Computer Science
+
+Skills:
+Python
+HTML
+CSS
+JavaScript
+SQL
+Machine Learning
+Git
+
+Projects:
+AI Resume Screening System
+E-Commerce Website"
+        ></textarea>
+      </div>
+
+      <!-- Analyze Button -->
+
+      <button class="analyze-btn" onclick="analyzeResume()">
+        🤖 Analyze Resume
+      </button>
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+      <div class="logo">Resume<span>AI</span></div>
+
+      <p>AI Resume Screening System</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

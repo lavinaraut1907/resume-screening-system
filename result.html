@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Analysis Result - ResumeAI</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="logo">Resume<span>AI</span></div>
+
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="upload.html">Screen Resume</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="index.html">Logout</a>
+      </nav>
+    </header>
+
+    <!-- Result Section -->
+    <section class="result-page">
+      <p class="section-tag">AI ANALYSIS COMPLETE</p>
+
+      <h1>Resume Screening Result</h1>
+
+      <p class="result-subtitle">
+        Candidate resume has been analyzed successfully.
+      </p>
+
+      <!-- Candidate -->
+      <div class="candidate-card">
+        <div class="candidate-left">
+          <div class="candidate-icon">👤</div>
+
+          <div>
+            <h2 id="candidateName">Candidate</h2>
+
+            <p id="candidateFile">Resume analyzed</p>
+          </div>
+        </div>
+
+        <div class="recommendation" id="recommendation">Good Match</div>
+      </div>
+
+      <!-- Score -->
+      <div class="score-result-card">
+        <div class="score-circle-large">
+          <span id="resultScore"> 0% </span>
+        </div>
+
+        <div class="score-info">
+          <h2>Overall Match Score</h2>
+
+          <p>
+            The score represents how well the candidate matches the job
+            requirements.
+          </p>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="result-skills">
+        <!-- Matched -->
+        <div class="result-skill-card">
+          <h2>✅ Matched Skills</h2>
+
+          <p>Skills found in the candidate resume.</p>
+
+          <div id="resultMatchedSkills">
+            <span class="skill matched"> Python </span>
+
+            <span class="skill matched"> HTML </span>
+
+            <span class="skill matched"> CSS </span>
+          </div>
+        </div>
+
+        <!-- Missing -->
+        <div class="result-skill-card">
+          <h2>⚠️ Missing Skills</h2>
+
+          <p>Required skills not found in resume.</p>
+
+          <div id="resultMissingSkills">
+            <span class="skill missing"> Machine Learning </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation -->
+      <div class="recommendation-card">
+        <h2>🎯 AI Recommendation</h2>
+
+        <p id="aiRecommendation">
+          Candidate shows good compatibility with the given job requirements.
+        </p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="result-buttons">
+        <a href="upload.html" class="secondary-btn"> ← Analyze Another </a>
+
+        <a href="ranking.html" class="primary-btn">
+          View Candidate Ranking →
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="logo">Resume<span>AI</span></div>
+
+      <p>AI Resume Screening System</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+<script>
+
+    // Get saved result
+
+    let score =
+        localStorage.getItem("resumeScore") || 0;
+
+    let name =
+        localStorage.getItem("candidateName") || "Candidate";
+
+    let matched =
+        JSON.parse(
+            localStorage.getItem("matchedSkills") || "[]"
+        );
+
+    let missing =
+        JSON.parse(
+            localStorage.getItem("missingSkills") || "[]"
+        );
+
+
+    // Display candidate
+
+    document.getElementById("candidateName").innerText =
+        name;
+
+
+    // Display score
+
+    document.getElementById("resultScore").innerText =
+        score + "%";
+
+
+    // Recommendation
+
+    let recommendation =
+        document.getElementById("recommendation");
+
+    let aiRecommendation =
+        document.getElementById("aiRecommendation");
+
+
+    if (score >= 80) {
+
+        recommendation.innerText =
+            "Excellent Match";
+
+        aiRecommendation.innerText =
+            "Candidate strongly matches the job requirements and can be shortlisted for the next stage.";
+
+    }
+    else if (score >= 60) {
+
+        recommendation.innerText =
+            "Good Match";
+
+        aiRecommendation.innerText =
+            "Candidate has good compatibility with the job requirements.";
+
+    }
+    else if (score >= 40) {
+
+        recommendation.innerText =
+            "Average Match";
+
+        aiRecommendation.innerText =
+            "Candidate partially matches the job requirements. Review the missing skills.";
+
+    }
+    else {
+
+        recommendation.innerText =
+            "Low Match";
+
+        aiRecommendation.innerText =
+            "Candidate has limited matching skills for this job.";
+
+    }
+
+
+    // Matched skills
+
+    let matchedHTML = "";
+
+    if (matched.length === 0) {
+
+        matchedHTML =
+            "<p>No matched skills found.</p>";
+
+    }
+    else {
+
+        matched.forEach(function(skill) {
+
+            matchedHTML +=
+                `<span class="skill matched">
+                    ${skill}
+                </span>`;
+
+        });
+
+    }
+
+    document.getElementById(
+        "resultMatchedSkills"
+    ).innerHTML = matchedHTML;
+
+
+    // Missing skills
+
+    let missingHTML = "";
+
+    if (missing.length === 0) {
+
+        missingHTML =
+            "<p>No missing skills 🎉</p>";
+
+    }
+    else {
+
+        missing.forEach(function(skill) {
+
+            missingHTML +=
+                `<span class="skill missing">
+                    ${skill}
+                </span>`;
+
+        });
+
+    }
+
+    document.getElementById(
+        "resultMissingSkills"
+    ).innerHTML = missingHTML;
+
+</script>

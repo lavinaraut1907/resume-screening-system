@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard - ResumeAI</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="logo">Resume<span>AI</span></div>
+
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="upload.html">Screen Resume</a>
+        <a href="ranking.html">Ranking</a>
+
+        <a href="index.html" onclick="logoutUser()"> Logout </a>
+      </nav>
+    </header>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+      <div class="dashboard-heading">
+        <div>
+          <p class="section-tag">DASHBOARD</p>
+
+          <h1>Welcome, <span id="userName">User</span> 👋</h1>
+
+          <p>Manage your resume screening process easily.</p>
+        </div>
+
+        <a href="upload.html" class="primary-btn"> + Screen New Resume </a>
+      </div>
+
+      <!-- Statistics -->
+      <div class="stats-container">
+        <div class="stat-card">
+          <div class="stat-icon">📄</div>
+
+          <div>
+            <p>Total Resumes</p>
+            <h2 id="totalResumes">0</h2>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+
+          <div>
+            <p>Candidates Screened</p>
+            <h2 id="screenedCandidates">0</h2>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+
+          <div>
+            <p>Average Match</p>
+            <h2 id="averageScore">0%</h2>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+
+          <div>
+            <p>Shortlisted</p>
+            <h2 id="shortlisted">0</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+    </section>
+  </body>
+</html>
